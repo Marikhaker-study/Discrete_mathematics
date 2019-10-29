@@ -116,6 +116,20 @@ struct set
 		int simetr(bool **b_r, int an, int bn, set s)
 		{
 			bool flag = 1;
+			int cond = 0;
+			for (int i = 0; i < an; i++)
+			{
+				for (int j = 0; j < an; j++)
+				{
+					if (b_r[i][j] == 0)cond++;
+				}
+			}
+			if (cond == (an*an))
+			{
+				cout << "Simetr: ";
+				cout << "False" << endl;
+				return 0;
+			}
 			int i = 0;
 			do {
 				for (int j = 0; j < an; j++)
@@ -169,7 +183,7 @@ struct set
 				i++;
 			} while (i < an&&flag != 1);
 			cout << "A_simetr: ";
-			if (!flag && ff-tf <ff) {
+			if (!flag && ff != 0 && tf != 0) {
 				cout << "True" << endl;
 				return 1;
 			}
@@ -182,7 +196,7 @@ struct set
 
 		void anti_simetr(bool **b_r, int an, int bn, set s, int sim, int a_sim)
 		{
-			if (sim == 1 || a_sim ==1)
+			if (sim == 1 || a_sim == 1)
 			{
 				cout << "Anti_simetr: ";
 				cout << "False" << endl;
@@ -213,13 +227,27 @@ struct set
 		{
 			bool flag = 1;
 
+			int cond = 0;
+			for (int i = 0; i < an; i++)
+			{
+				for (int j = 0; j < an; j++)
+				{
+					if (b_r[i][j] == 0)cond++;
+				}
+			}
+			if (cond == (an*an))
+			{
+				cout << "Trans: ";
+				cout << "False" << endl;
+				return 0;
+			}
 			for (int i = 0; i < an; i++)
 			{
 				for (int j = 0; j < an; j++)
 				{
 					for (int k = 0; k < an; k++)
 					{
-						if (b_r[i][k]==1 && b_r[k][j]==1 && b_r[i][j]==0) flag = 0;
+						if (b_r[i][k] && b_r[k][j] && !b_r[i][j]) flag = 0;
 					}
 				}
 			}
@@ -236,8 +264,9 @@ struct set
 			}
 		}
 
-		void anti_trans(bool **b_r, int an, int bn, set s)
+		void anti_trans(bool **b_r, int an, int bn, set s, int trans)
 		{
+			if (trans == 1) return;
 			bool flag = 1;
 
 			for (int i = 0; i < an; i++)
@@ -265,9 +294,9 @@ struct set
 		int a_sim = bin.a_simetr(b_r, an, bn, s, sim);
 		bin.anti_simetr(b_r, an, bn, s, sim, a_sim);
 		int tran = bin.trans(b_r, an, bn, s);
-		bin.anti_trans(b_r, an, bn, s);
+		bin.anti_trans(b_r, an, bn, s, tran);
 
-		cout << "Equal: ";
+		cout << "Full: ";
 		if (refl == 1 && sim == 1 && tran == 1)
 		{
 			cout << "True" << endl;
@@ -279,7 +308,6 @@ struct set
 int main()
 {
 	set s;
-
 
 	int an, bn, b_rn;
 	//cout << "Enter size of set a, b" << endl;
