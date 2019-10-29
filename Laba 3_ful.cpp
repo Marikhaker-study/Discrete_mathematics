@@ -169,7 +169,7 @@ struct set
 				i++;
 			} while (i < an&&flag != 1);
 			cout << "A_simetr: ";
-			if (!flag && ff!=0 &&tf !=0) {
+			if (!flag && ff-tf <ff) {
 				cout << "True" << endl;
 				return 1;
 			}
@@ -219,7 +219,7 @@ struct set
 				{
 					for (int k = 0; k < an; k++)
 					{
-						if (b_r[i][k] && b_r[k][j] && !b_r[i][j]) flag = 0;
+						if (b_r[i][k]==1 && b_r[k][j]==1 && b_r[i][j]==0) flag = 0;
 					}
 				}
 			}
@@ -267,7 +267,7 @@ struct set
 		int tran = bin.trans(b_r, an, bn, s);
 		bin.anti_trans(b_r, an, bn, s);
 
-		cout << "Full: ";
+		cout << "Equal: ";
 		if (refl == 1 && sim == 1 && tran == 1)
 		{
 			cout << "True" << endl;
@@ -279,6 +279,7 @@ struct set
 int main()
 {
 	set s;
+
 
 	int an, bn, b_rn;
 	//cout << "Enter size of set a, b" << endl;
