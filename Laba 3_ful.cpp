@@ -1,4 +1,4 @@
-// Laba3.cpp: определяет точку входа для консольного приложения.
+// Laba3.cpp: Г®ГЇГ°ГҐГ¤ГҐГ«ГїГҐГІ ГІГ®Г·ГЄГі ГўГµГ®Г¤Г  Г¤Г«Гї ГЄГ®Г­Г±Г®Г«ГјГ­Г®ГЈГ® ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї.
 //
 
 #include "stdafx.h"
@@ -296,7 +296,7 @@ struct set
 		int tran = bin.trans(b_r, an, bn, s);
 		bin.anti_trans(b_r, an, bn, s, tran);
 
-		cout << "Full: ";
+		cout << "Equal: ";
 		if (refl == 1 && sim == 1 && tran == 1)
 		{
 			cout << "True" << endl;
