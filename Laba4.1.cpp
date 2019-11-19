@@ -85,7 +85,9 @@ void MOD_P(graph *g, int nodes, int sides)
 	{
 		ck_node[i] = 0;
 	}
-
+	cout << "Min ost tree" << endl;
+	cout << "A\t" << "B\t" << "Weight\t" << endl;
+	cout << endl;
 	cout << g[0].a << "\t" << g[0].b << "\t" << g[0].w << "\t" << endl;
 	g[0].ck_a = 1; 	g[0].ck_b = 1;
 	ck_node[ck_i] = g[0].a;
@@ -152,9 +154,11 @@ int main()
 	int nodes = 11;
 	int sides = 18;
 	graph *g = new graph[sides];
-
+	cout << "Initialized graph" << endl;
+	cout <<"Side\t" << "A\t" << "B\t" << "Weight\t" << endl;
+	cout << endl;
 	initgraph(g, nodes, sides); 
-
+	
 	MOD_P(g, nodes, sides);
 
 	delete[] g;
